@@ -1,0 +1,14 @@
+name: "Dependaction - Rebase"
+description: "Rebase PRs after push to main branch"
+inputs:
+  base-branch: # root directories to search for deps
+    description: ""
+    required: false
+    default: ""
+runs:
+  using: "composite"
+  steps:
+    - uses: peter-evans/rebase@v1
+      with:
+        base: ${{ inputs.base-branch }}
+        include-labels: dependaction
