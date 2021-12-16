@@ -1,6 +1,9 @@
 name: "Dependaction - Rebase"
 description: "Rebase PRs after push to main branch"
 inputs:
+  token:
+    required: false
+    default: ${{ github.token }}
   base-branch: # root directories to search for deps
     description: ""
     required: false
@@ -10,5 +13,6 @@ runs:
   steps:
     - uses: peter-evans/rebase@v1
       with:
+        token: ${{ inputs.token }}
         base: ${{ inputs.base-branch }}
         include-labels: dependaction
